@@ -1,24 +1,31 @@
 import * as React from 'react';
-import {Text, View, StyleSheet, Image, TextInput, TouchableOpacity} from 'react-native';
+import { Text, View, StyleSheet, Image, TextInput, TouchableOpacity, Platform, AlertIOS, ToastAndroid } from 'react-native';
 import Colors from '../assets/colors/colors';
 import LinearGradient from 'react-native-linear-gradient';
 import colors from '../assets/colors/colors';
+import firestore, { firebase } from '@react-native-firebase/firestore';
 
-export default Login = ({navigation}) => {
+var nav;
+export default Login = ({ navigation }) => {
 
-    return(
+    nav = navigation;
+    const [email, onChangeEmail] = React.useState(null);
+    const [password, onChangePassword] = React.useState(null);
+
+    return (
         <View style={styles.container}>
             <View style={styles.title}>
-                <Image source={require('../assets/images/logo2.png')} style={{width:90, height:90}}/>
-                <Text style={{color: colors.white, fontSize:18}}>
+                <Image source={require('../assets/images/logo2.png')} style={{ width: 90, height: 90 }} />
+                <Text style={{ color: colors.white, fontSize: 18 }}>
                     Employee Attendance System
                 </Text>
             </View>
             <View style={styles.body}>
-                <Text style={[styles.bodyText, {marginTop: 40}]}>Email</Text>
+                <Text style={[styles.bodyText, { marginTop: 40 }]}>Email</Text>
                 <View style={styles.emailWrapper}>
-                    <Image source={require('../assets/images/email.png')} style={styles.icons}/>
-                    <TextInput 
+                    <Image source={require('../assets/images/email.png')} style={styles.icons} />
+                    <TextInput
+                        onChangeText={onChangeEmail}
                         placeholder="Your Email"
                         placeholderTextColor="#666666"
                         style={[styles.textInput, {
@@ -27,11 +34,13 @@ export default Login = ({navigation}) => {
                         autoCapitalize="none"
                     />
                 </View>
-                <Text style={[styles.bodyText, {marginTop: 20}]}>Password</Text>
+                <Text style={[styles.bodyText, { marginTop: 20 }]}>Password</Text>
                 <View style={styles.emailWrapper}>
-                    <Image source={require('../assets/images/password.png')} style={styles.icons}/>
-                    <TextInput 
+                    <Image source={require('../assets/images/password.png')} style={styles.icons} />
+                    <TextInput
+                        onChangeText={onChangePassword}
                         placeholder="Your Password"
+                        secureTextEntry={true}
                         placeholderTextColor="#666666"
                         style={[styles.textInput, {
                             color: Colors.textDark
@@ -39,49 +48,107 @@ export default Login = ({navigation}) => {
                         autoCapitalize="none"
                     />
                 </View>
-                <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-                <LinearGradient colors={['#4c669f', '#3b5998', '#192f6a']} style={styles.linearGradient}>
-                    <Text style={styles.buttonText}>
-                        Login
-                    </Text>
-                </LinearGradient>
+                <TouchableOpacity onPress={() => loginUser(email, password)}>
+                    <LinearGradient colors={['#4c669f', '#3b5998', '#192f6a']} style={styles.linearGradient}>
+                        <Text style={styles.buttonText}>
+                            Login
+                        </Text>
+                    </LinearGradient>
                 </TouchableOpacity>
-                <TouchableOpacity 
-                    onPress={() => navigation.navigate('AddEmployee')}
-                    style={[styles.linearGradient, {borderColor: '#3b5998', borderWidth:1,
-                    marginTop: 15}]}>
-                    <Text style={[styles.buttonText,{color: Colors.black, textAlign: 'center', color: '#009387'}]}>
+                <TouchableOpacity
+                    style={[styles.linearGradient, {
+                        borderColor: '#3b5998', borderWidth: 1,
+                        marginTop: 15
+                    }]}>
+                    <Text style={[styles.buttonText, { color: Colors.black, textAlign: 'center', color: '#009387' }]}>
                         Register
-                    </Text> 
+                    </Text>
                 </TouchableOpacity>
             </View>
         </View>
     );
 }
 
+async function loginUser(userEmail, userPassword) {
+
+    if (!userEmail || userEmail === '') {
+
+        if (Platform.OS === 'android') {
+            ToastAndroid.show('Please enter a valid email address!', ToastAndroid.LONG)
+        } else {
+            AlertIOS.alert('Please enter a valid email address!');
+        }
+    }
+    else if (!userPassword || userPassword === '') {
+
+        if (Platform.OS === 'android') {
+            ToastAndroid.show('Please enter password', ToastAndroid.LONG)
+        } else {
+            AlertIOS.alert('Please enter password');
+        }
+    }
+
+    else if (await isUserVerified(userEmail, userPassword)) {
+
+        nav.navigate('Home');
+    }
+    else {
+        if (Platform.OS === 'android') {
+            ToastAndroid.show('Invalid email or password!', ToastAndroid.LONG)
+        } else {
+            AlertIOS.alert('Invalid email or password!');
+        }
+    }
+}
+
+async function isUserVerified(e, p) {
+
+    var isValid = false;
+    await firestore().collection('admins').where('email', '==', e).get()
+        .then(querySnapshot => {
+
+            if (querySnapshot.size !== 0) {
+
+                var pass = querySnapshot.docs[0].get('password').toString();
+                if (pass === p) {
+
+                    isValid = true;
+                }
+                else {
+
+                    isValid = false;
+                }
+            }
+            
+        });
+
+    return isValid;
+
+}
+
 const styles = StyleSheet.create({
 
-    container:{
+    container: {
         flex: 1,
         backgroundColor: Colors.primary,
     },
-    title:{
+    title: {
         height: '38%',
         justifyContent: 'center',
-        alignItems:'center'
+        alignItems: 'center'
     },
-    body:{
+    body: {
         flex: 1,
         backgroundColor: Colors.white,
         borderTopLeftRadius: 26,
         borderTopRightRadius: 26,
         paddingHorizontal: 25,
     },
-    bodyText:{
+    bodyText: {
         color: '#05375a',
         fontSize: 18
     },
-    emailWrapper:{
+    emailWrapper: {
         flexDirection: 'row',
         marginTop: 10,
         borderBottomWidth: 1,
@@ -89,9 +156,9 @@ const styles = StyleSheet.create({
         paddingBottom: 0,
         alignItems: 'center'
     },
-    icons:{
-        width:20,
-        height:20,
+    icons: {
+        width: 20,
+        height: 20,
     },
     textInput: {
         flex: 1,
@@ -114,13 +181,13 @@ const styles = StyleSheet.create({
         paddingRight: 15,
         borderRadius: 5,
         marginTop: 50
-      },
-      buttonText: {
+    },
+    buttonText: {
         fontSize: 16,
         fontFamily: 'Gill Sans',
         textAlign: 'center',
         margin: 10,
         color: '#ffffff',
         backgroundColor: 'transparent',
-      },
+    },
 });
