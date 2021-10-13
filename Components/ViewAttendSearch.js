@@ -1,24 +1,32 @@
-import * as React from 'react';
-import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react'
+import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform, AlertIOS, ToastAndroid } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import colors from '../assets/colors/colors';
+import DatePicker from 'react-native-date-picker'
 
 export default ViewAttendSearch = ({ navigation }) => {
+
+    const [empId, onChangeEmpId] = useState(null);
+    const [startDate, setStartDate] = useState(new Date());
+    const [endDate, setEndDate] = useState(new Date());
+    const [startOpen, setStartOpen] = useState(false);
+    const [endOpen, setEndOpen] = useState(false);
 
     return (
         <View style={
             {
                 paddingHorizontal: 20,
                 paddingVertical: 12,
-                flex:1,
-                backgroundColor:colors.white
+                flex: 1,
+                backgroundColor: colors.white
             }}>
             <View style={styles.card}>
-                <Text style={{fontWeight: 'bold', color:colors.primary}}>
+                <Text style={{ fontWeight: 'bold', color: colors.primary }}>
                     Please enter details
                 </Text>
-                <View style={[styles.inputWrapper, {marginTop:18}]}>
+                <View style={[styles.inputWrapper, { marginTop: 18 }]}>
                     <TextInput
+                        onChangeText={onChangeEmpId}
                         placeholder="Employee ID"
                         placeholderTextColor="#666666"
                         style={[styles.textInput, {
@@ -27,22 +35,62 @@ export default ViewAttendSearch = ({ navigation }) => {
                         autoCapitalize="none"
                     />
                 </View>
-                <Text style={{marginTop: 18}}>
+                <Text style={{ marginTop: 18 }}>
                     For the period
                 </Text>
-                <Text style={{color:colors.textGrey, marginTop:10}}>
+                <Text style={{ color: colors.textGrey, marginTop: 10 }}>
                     From
                 </Text>
-                <View style={[styles.dateContainer, {marginTop:8}]}>
-                    <Text>Select Start Date</Text>
-                </View>
-                <Text style={{color:colors.textGrey, marginTop:8}}>
+                <TouchableOpacity onPress={() => setStartOpen(true)}>
+                    <View style={[styles.dateContainer, { marginTop: 8 }]}>
+                        <Text>{startDate.toDateString()}</Text>
+                    </View>
+                </TouchableOpacity>
+                <DatePicker
+                    modal
+                    open={startOpen}
+                    date={startDate}
+                    mode='date'
+                    onConfirm={(date) => {
+                        setStartOpen(false)
+                        setStartDate(date)
+                    }}
+                    onCancel={() => {
+                        setStartOpen(false)
+                    }}
+                />
+                <Text style={{ color: colors.textGrey, marginTop: 8 }}>
                     To
                 </Text>
-                <View style={[styles.dateContainer, {marginTop:8}]}>
-                    <Text>Select End Date</Text>
-                </View>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => setEndOpen(true)}>
+                    <View style={[styles.dateContainer, { marginTop: 8 }]}>
+                        <Text>{endDate.toDateString()}</Text>
+                    </View>
+                </TouchableOpacity>
+                <DatePicker
+                    modal
+                    open={endOpen}
+                    date={endDate}
+                    mode='date'
+                    onConfirm={(date) => {
+                        setEndOpen(false);
+                        setEndDate(date);
+                        if(!(+date > +startDate)){
+                            
+                            setEndDate(new Date())
+                            if (Platform.OS === 'android') {
+                                ToastAndroid.show('End date cannot be less than start date', ToastAndroid.LONG)
+                            } else {
+                                AlertIOS.alert('End date cannot be less than start date');
+                            }
+                        }
+                        
+                    }}
+                    onCancel={() => {
+                        setEndOpen(false);
+                    }}
+                />
+                <TouchableOpacity onPress={() => onButtonPress(empId, startDate, endDate)}>
                     <LinearGradient colors={['#3b5998', '#3b5998', '#3b5998']} style={styles.linearGradient}>
                         <Text style={styles.buttonText}>View Attendance</Text>
                     </LinearGradient>
@@ -50,18 +98,39 @@ export default ViewAttendSearch = ({ navigation }) => {
             </View>
         </View>
     );
+
+    function onButtonPress(id, stDate, enDate){
+
+        if(id === ''){
+
+            if (Platform.OS === 'android') {
+                ToastAndroid.show('Please enter employee ID', ToastAndroid.LONG)
+            } else {
+                AlertIOS.alert('Please enter employee ID');
+            }
+        }
+        else{
+            navigation.navigate('ViewAttendance', {
+
+                id: id,
+                startDate: stDate.toDateString(),
+                endDate: enDate.toDateString()
+            });
+        }
+        
+    }
 }
 
 const styles = StyleSheet.create({
 
     card: {
         width: '100%',
-        
+
         borderColor: colors.primary,
         borderWidth: 1,
         borderRadius: 8,
-        paddingVertical:18,
-        paddingHorizontal:18
+        paddingVertical: 18,
+        paddingHorizontal: 18
     },
     inputWrapper: {
         flexDirection: 'row',
@@ -75,11 +144,11 @@ const styles = StyleSheet.create({
         paddingVertical: 2,
         fontSize: 14
     },
-    dateContainer:{
-        borderWidth:1,
-        borderColor:colors.price,
-        borderRadius:10,
-        padding:6
+    dateContainer: {
+        borderWidth: 1,
+        borderColor: colors.price,
+        borderRadius: 10,
+        padding: 6
     },
     linearGradient: {
         height: 42,
@@ -87,7 +156,7 @@ const styles = StyleSheet.create({
         paddingRight: 15,
         borderRadius: 5,
         marginTop: 30,
-        justifyContent:'center'
+        justifyContent: 'center'
     },
     buttonText: {
         fontSize: 14,
@@ -96,5 +165,5 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         color: '#ffffff',
         backgroundColor: 'transparent',
-      },
+    },
 })

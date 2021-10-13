@@ -7,6 +7,7 @@ import AddEmployee from './Components/AddEmployee'
 import ViewAttendSearch from './Components/ViewAttendSearch';
 import Employees from './Components/Employees';
 import Salary from './Components/Salary';
+import ViewAttendance from './Components/ViewAttendance';
 
 const Stack = createNativeStackNavigator();
 
@@ -54,6 +55,13 @@ export default function App() {
             component={Salary}
             options = {{
               title: 'Calculate Salary',
+              animation:'slide_from_right',
+          }}/>
+          <Stack.Screen 
+            name="ViewAttendance"
+            component={ViewAttendance}
+            options = {{
+              title: 'View Attendance',
               animation:'slide_from_right',
           }}/>
       </Stack.Navigator>
