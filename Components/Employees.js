@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, Image, FlatList, ActivityIndicator  } from 'react-native';
-import Colors from '../assets/colors/colors';
-import LinearGradient from 'react-native-linear-gradient';
 import colors from '../assets/colors/colors';
 import firestore from '@react-native-firebase/firestore';
 
@@ -103,13 +101,6 @@ export default Employees = ({ navigation }) => {
             }}>
 
             {EmployeesList()}
-            {/* <ListItem name="Sarfaraz Ghaffar" designation="Android developer" />
-            <ListItem name="Anthony Anthony" designation="Web developer" />
-            <ListItem name="Michelle Michelle" designation="Graphics designer" />
-
-            <ListItem name="Sarfaraz Ghaffar" designation="Android developer" />
-            <ListItem name="Anthony Anthony" designation="Web developer" />
-            <ListItem name="Michelle Michelle" designation="Graphics designer" /> */}
 
         </View>
     );
