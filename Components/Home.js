@@ -8,7 +8,7 @@ export default Home = ({navigation}) => {
 
             <View style={styles.title}>
                 <View>
-                    <Text style={styles.titleText}>Welcome</Text>
+                    <Text style={styles.titleText}>EAS React</Text>
                 </View>     
             </View>
             <View style={styles.body}>

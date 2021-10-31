@@ -145,14 +145,14 @@ const styles = StyleSheet.create({
         paddingHorizontal: 25,
     },
     bodyText: {
-        color: '#05375a',
+        color: colors.textColor1,
         fontSize: 18
     },
     emailWrapper: {
         flexDirection: 'row',
         marginTop: 10,
         borderBottomWidth: 1,
-        borderBottomColor: '#f2f2f2',
+        borderBottomColor: colors.textInputBorder,
         paddingBottom: 0,
         alignItems: 'center'
     },

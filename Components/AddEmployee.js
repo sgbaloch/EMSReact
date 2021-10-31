@@ -49,7 +49,6 @@ export default AddEmployee = ({ navigation }) => {
                 <View style={[styles.inputWrapper, { marginTop: 18 }]}>
                     <TextInput
                         onChangeText={onChangeEmail}
-                        keyboardType='email-address'
                         placeholder="Email"
                         placeholderTextColor="#666666"
                         style={[styles.textInput, {
