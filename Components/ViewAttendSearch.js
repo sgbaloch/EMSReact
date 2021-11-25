@@ -75,8 +75,8 @@ export default ViewAttendSearch = ({ navigation }) => {
                     onConfirm={(date) => {
                         setEndOpen(false);
                         setEndDate(date);
-                        if(!(+date > +startDate)){
-                            
+                        if (!(+date > +startDate)) {
+
                             setEndDate(new Date())
                             if (Platform.OS === 'android') {
                                 ToastAndroid.show('End date cannot be less than start date', ToastAndroid.LONG)
@@ -84,7 +84,7 @@ export default ViewAttendSearch = ({ navigation }) => {
                                 AlertIOS.alert('End date cannot be less than start date');
                             }
                         }
-                        
+
                     }}
                     onCancel={() => {
                         setEndOpen(false);
@@ -99,9 +99,9 @@ export default ViewAttendSearch = ({ navigation }) => {
         </View>
     );
 
-    function onButtonPress(id, stDate, enDate){
+    function onButtonPress(id, stDate, enDate) {
 
-        if(id === ''){
+        if (id === '') {
 
             if (Platform.OS === 'android') {
                 ToastAndroid.show('Please enter employee ID', ToastAndroid.LONG)
@@ -109,7 +109,7 @@ export default ViewAttendSearch = ({ navigation }) => {
                 AlertIOS.alert('Please enter employee ID');
             }
         }
-        else{
+        else {
             navigation.navigate('ViewAttendance', {
 
                 id: id,
@@ -117,7 +117,7 @@ export default ViewAttendSearch = ({ navigation }) => {
                 endDate: enDate.toDateString()
             });
         }
-        
+
     }
 }
 

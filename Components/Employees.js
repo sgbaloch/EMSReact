@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, Image, FlatList, ActivityIndicator  } from 'react-native';
+import { Text, View, StyleSheet, Image, FlatList, ActivityIndicator } from 'react-native';
 import colors from '../assets/colors/colors';
 import firestore from '@react-native-firebase/firestore';
 
@@ -49,7 +49,10 @@ function EmployeesList() {
                         </View>
                         <View style={styles.nameSection}>
                             <View style={{ flex: 1 }}>
-                                <Text style={{ fontWeight: 'bold' }}>{item.firstName}</Text>
+                                <View style={{ flexDirection: 'row' }}>
+                                    <Text style={{ fontWeight: 'bold' }}>{item.firstName}</Text>
+                                    <Text style={{ fontWeight: 'bold', marginStart: 5 }}>{item.lastName}</Text>
+                                </View>
                                 <Text>{item.designation}</Text>
                             </View>
                             <Image style={{ width: 12, height: 12 }} source={require('../assets/images/menu.png')} />

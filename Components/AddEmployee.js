@@ -116,33 +116,32 @@ export default AddEmployee = ({ navigation }) => {
     async function registerEmployee() {
 
         var lastDoc = firestore().collection('employees').orderBy('dateCreated', 'desc').limit(1).get();
-        console.log((await lastDoc).docs[0].id);
         var lastDocId = (await lastDoc).docs[0].id;
         lastDocId++;
-    
+
         var timeStamp = firebase.firestore.Timestamp.fromDate(new Date());
-    
+
         await firestore()
             .collection('employees')
             .doc(lastDocId.toString())
             .set({
                 firstName: fName,
                 lastName: lName,
-                address:address,
-                email:email,
-                contact:contact,
-                designation:designation,
-                payRate:payRate,
-                dateCreated:timeStamp
+                address: address,
+                email: email,
+                contact: contact,
+                designation: designation,
+                payRate: payRate,
+                dateCreated: timeStamp
             })
             .then(() => {
                 if (Platform.OS === 'android') {
                     ToastAndroid.show('Employee added succesfully!', ToastAndroid.LONG)
-                  } else {
+                } else {
                     AlertIOS.alert('Employee added successfully!');
-                  }
+                }
             });
-            
+
     }
 }
 

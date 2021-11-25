@@ -10,7 +10,7 @@ export default ViewAttendance = ({ route, navigation }) => {
     return (
         <View style={styles.wrapper}>
             <View style={styles.titleWrapper}>
-                <View style={{flex:3, flexDirection:'row'}}>
+                <View style={{ flex: 3, flexDirection: 'row' }}>
                     <View style={styles.image}>
                         <Image source={require('../assets/images/employee.png')}
                             style={{
@@ -21,12 +21,12 @@ export default ViewAttendance = ({ route, navigation }) => {
                     </View>
                     {getEmployeeName(id)}
                 </View>
-                <View style={{flex:2, flexDirection:'row', alignSelf:'center', justifyContent:'flex-end'}}>
-                    <Text style={{fontWeight:'bold'}}>Emp ID: {id}</Text>
+                <View style={{ flex: 2, flexDirection: 'row', alignSelf: 'center', justifyContent: 'flex-end' }}>
+                    <Text style={{ fontWeight: 'bold' }}>Emp ID: {id}</Text>
                 </View>
             </View>
-            <View style={{flexDirection:'row', marginVertical:12, justifyContent:'center'}}>
-                <Text style={{fontWeight:'bold'}}>
+            <View style={{ flexDirection: 'row', marginVertical: 12, justifyContent: 'center' }}>
+                <Text style={{ fontWeight: 'bold' }}>
                     For the period: {new Date(startDate).toLocaleDateString()} - {new Date(endDate).toLocaleDateString()}
                 </Text>
             </View>

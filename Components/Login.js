@@ -119,7 +119,7 @@ async function isUserVerified(e, p) {
                     isValid = false;
                 }
             }
-            
+
         });
 
     return isValid;

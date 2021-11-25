@@ -1,54 +1,52 @@
 import * as React from 'react';
-import {Text, View, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import Colors from '../assets/colors/colors';
 
-export default Home = ({navigation}) => {
+export default Home = ({ navigation }) => {
     return (
         <View style={styles.container}>
-
             <View style={styles.title}>
                 <View>
                     <Text style={styles.titleText}>EAS React</Text>
-                </View>     
+                </View>
             </View>
             <View style={styles.body}>
-                <View style={styles.bodyRow1}> 
+                <View style={styles.bodyRow1}>
                     <TouchableOpacity onPress={() => navigation.navigate('AddEmployee')}>
-                    <View style={styles.cell}>
-                        <Image source={require('../assets/images/employee.png')} style={styles.cellImage}/>
-                        <Text style={{marginTop:10, fontWeight: '600'}}>Add new employee</Text>
-                    </View>
+                        <View style={styles.cell}>
+                            <Image source={require('../assets/images/employee.png')} style={styles.cellImage} />
+                            <Text style={{ marginTop: 10, fontWeight: '600' }}>Add new employee</Text>
+                        </View>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => navigation.navigate('Employees')}>
-                    <View style={styles.cell}>
-                        <Image source={require('../assets/images/employees.png')} style={styles.cellImage}/>
-                        <Text style={{marginTop:10, fontWeight: '600'}}>View employee list</Text>
-                    </View>
+                        <View style={styles.cell}>
+                            <Image source={require('../assets/images/employees.png')} style={styles.cellImage} />
+                            <Text style={{ marginTop: 10, fontWeight: '600' }}>View employee list</Text>
+                        </View>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.bodyRow2}> 
+                <View style={styles.bodyRow2}>
                     <TouchableOpacity onPress={() => navigation.navigate('ViewAttendSearch')}>
-                    <View style={styles.cell}>
-                        <Image source={require('../assets/images/attendance.png')} style={styles.cellImage}/>
-                        <Text style={{marginTop:10, fontWeight: '600'}}>View attendance</Text>
-                    </View>
+                        <View style={styles.cell}>
+                            <Image source={require('../assets/images/attendance.png')} style={styles.cellImage} />
+                            <Text style={{ marginTop: 10, fontWeight: '600' }}>View attendance</Text>
+                        </View>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => navigation.navigate('Salary')}>
-                    <View style={styles.cell}>
-                        <Image source={require('../assets/images/salary2.png')} style={styles.cellImage}/>
-                        <Text style={{marginTop:10, fontWeight: '600'}}>Calculate Salary</Text>
-                    </View>
+                        <View style={styles.cell}>
+                            <Image source={require('../assets/images/salary2.png')} style={styles.cellImage} />
+                            <Text style={{ marginTop: 10, fontWeight: '600' }}>Calculate Salary</Text>
+                        </View>
                     </TouchableOpacity>
                 </View>
             </View>
-
         </View>
-      );
+    );
 }
 
 const styles = StyleSheet.create({
 
-    container:{
+    container: {
         flex: 1,
     },
 
@@ -63,7 +61,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
 
-    titleText:{
+    titleText: {
         width: 300,
         alignSelf: 'center',
         fontSize: 25,
@@ -83,16 +81,16 @@ const styles = StyleSheet.create({
         justifyContent: 'space-evenly',
         marginHorizontal: 10,
     },
-    cell:{
-        width:160,
-        height:160,
+    cell: {
+        width: 160,
+        height: 160,
         backgroundColor: Colors.white,
         borderRadius: 10,
         elevation: 3,
         justifyContent: 'center',
-        alignItems:'center'
+        alignItems: 'center'
     },
-    cellImage:{
+    cellImage: {
         width: 52,
         height: 52,
     }
