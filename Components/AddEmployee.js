@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, Image, TextInput, TouchableOpacity, Platform, AlertIOS, ToastAndroid, Alert } from 'react-native';
+import { Text, View, StyleSheet, Image, TextInput, TouchableOpacity, Platform, ToastAndroid, Alert } from 'react-native';
 import Colors from '../assets/colors/colors';
 import LinearGradient from 'react-native-linear-gradient';
 import firestore, { firebase } from '@react-native-firebase/firestore';
