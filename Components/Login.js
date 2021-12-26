@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, Image, TextInput, TouchableOpacity, Platform, AlertIOS, ToastAndroid } from 'react-native';
+import { Text, View, StyleSheet, Image, TextInput, TouchableOpacity, Platform, ToastAndroid } from 'react-native';
 import Colors from '../assets/colors/colors';
 import LinearGradient from 'react-native-linear-gradient';
 import colors from '../assets/colors/colors';
@@ -76,7 +76,7 @@ async function loginUser(userEmail, userPassword) {
         if (Platform.OS === 'android') {
             ToastAndroid.show('Please enter a valid email address!', ToastAndroid.LONG)
         } else {
-            AlertIOS.alert('Please enter a valid email address!');
+            Alert.alert("Employee added succesfully!");
         }
     }
     else if (!userPassword || userPassword === '') {
@@ -84,7 +84,7 @@ async function loginUser(userEmail, userPassword) {
         if (Platform.OS === 'android') {
             ToastAndroid.show('Please enter password', ToastAndroid.LONG)
         } else {
-            AlertIOS.alert('Please enter password');
+            Alert.alert("Employee added succesfully!");
         }
     }
 
@@ -96,7 +96,7 @@ async function loginUser(userEmail, userPassword) {
         if (Platform.OS === 'android') {
             ToastAndroid.show('Invalid email or password!', ToastAndroid.LONG)
         } else {
-            AlertIOS.alert('Invalid email or password!');
+            Alert.alert("Employee added succesfully!");
         }
     }
 }

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, Image, TextInput, TouchableOpacity, Platform, AlertIOS, ToastAndroid } from 'react-native';
+import { Text, View, StyleSheet, Image, TextInput, TouchableOpacity, Platform, ToastAndroid, Alert } from 'react-native';
 import Colors from '../assets/colors/colors';
 import LinearGradient from 'react-native-linear-gradient';
 import firestore, { firebase } from '@react-native-firebase/firestore';
@@ -138,7 +138,7 @@ export default AddEmployee = ({ navigation }) => {
                 if (Platform.OS === 'android') {
                     ToastAndroid.show('Employee added succesfully!', ToastAndroid.LONG)
                 } else {
-                    AlertIOS.alert('Employee added successfully!');
+                    Alert.alert("Employee added succesfully!");
                 }
             });
 

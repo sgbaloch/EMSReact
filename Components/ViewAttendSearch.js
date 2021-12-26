@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform, AlertIOS, ToastAndroid } from 'react-native';
+import { Text, View, StyleSheet, TextInput, TouchableOpacity, Platform, ToastAndroid } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import colors from '../assets/colors/colors';
 import DatePicker from 'react-native-date-picker'
@@ -81,7 +81,7 @@ export default ViewAttendSearch = ({ navigation }) => {
                             if (Platform.OS === 'android') {
                                 ToastAndroid.show('End date cannot be less than start date', ToastAndroid.LONG)
                             } else {
-                                AlertIOS.alert('End date cannot be less than start date');
+                                Alert.alert("Employee added succesfully!");
                             }
                         }
 
@@ -106,7 +106,7 @@ export default ViewAttendSearch = ({ navigation }) => {
             if (Platform.OS === 'android') {
                 ToastAndroid.show('Please enter employee ID', ToastAndroid.LONG)
             } else {
-                AlertIOS.alert('Please enter employee ID');
+                Alert.alert("Employee added succesfully!");
             }
         }
         else {
