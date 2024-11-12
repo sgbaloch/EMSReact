@@ -30,8 +30,17 @@ Technologies used
 <img width="776" alt="image" src="https://github.com/user-attachments/assets/dc95b75e-b449-4d98-a6ed-646a07f04323">
 
 
+Objectives:
 
-
+In order to achieve the aims of this study, the following objectives are set:
+    1. Design an app which should contain different type of components that can be used to compare each framework.
+    2. Setup the environment for both frameworks including the SDKs and IDEs.
+    3. Develop the app using Flutter framework.
+    4. Develop the app using React Native framework.
+    5. Compare the lines of code required to develop each screen with each of the frameworks. This would be the first part of the ease of development comparison.
+    6. Test and compare the performance of the apps built with each framework based on the decided metrics criteria.
+    7. Survey Stackoverflow.com and gather data regarding the community support for each framework. This would be the second part of the ease of development.
+    8. Analyze the gathered data and create comparison charts.
 
 
 
