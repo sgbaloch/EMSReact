@@ -22,8 +22,7 @@ The system has the following functions:
 
 App screenshots (React Native App)
 
-<img src="https://github.com/user-attachments/assets/cee6b1f5-a153-42cd-9858-7890c1811974" style="width:25%;">  <img src="https://github.com/user-attachments/assets/a59d99fe-4a22-4ece-8bf9-4a71457e4356" style="width:25%;"> <img src="https://github.com/user-attachments/assets/79f0736b-b42a-4a64-bc0c-78f08f087bab" style="width:25%;">  <img src="https://github.com/user-attachments/assets/d52814d7-e30e-4c68-b74f-4240bd4baf40" style="width:25%;"> <img src="https://github.com/user-attachments/assets/4acf1965-8907-4bc6-b6f1-f5f0ec8893ed" style="width:25%;">  <img src="https://github.com/user-attachments/assets/2ac9b2e2-ddae-49e1-96c8-6b4b94c78285" style="width:25%;">
-
+<img src="https://github.com/user-attachments/assets/cee6b1f5-a153-42cd-9858-7890c1811974" style="width:25%;">  <img src="https://github.com/user-attachments/assets/f1af4c6c-3924-42bc-874c-5df2df21dd21" style="width:25%;"> <img src="https://github.com/user-attachments/assets/79f0736b-b42a-4a64-bc0c-78f08f087bab" style="width:25%;">  <img src="https://github.com/user-attachments/assets/d52814d7-e30e-4c68-b74f-4240bd4baf40" style="width:25%;"> <img src="https://github.com/user-attachments/assets/4acf1965-8907-4bc6-b6f1-f5f0ec8893ed" style="width:25%;">  <img src="https://github.com/user-attachments/assets/2ac9b2e2-ddae-49e1-96c8-6b4b94c78285" style="width:25%;">
 
 
 Technologies used
