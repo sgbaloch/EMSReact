@@ -43,6 +43,28 @@ In order to achieve the aims of this study, the following objectives were set:
     7. Survey Stackoverflow.com and gather data regarding the community support for each framework. This would be the second part of the ease of development.
     8. Analyze the gathered data and create comparison charts.
 
+Results:
+
+CPU Usage (Android)
+
+<img width="776" alt="image" src="https://github.com/user-attachments/assets/7cb4323d-5e0e-4acb-8704-5685b9322892">
+
+CPU Usage (iOS)
+
+<img width="741" alt="image" src="https://github.com/user-attachments/assets/63b206a2-664d-4a5e-8c80-9569df07622e">
+
+RAM Usage (Android)
+
+<img width="793" alt="image" src="https://github.com/user-attachments/assets/c3171001-877b-4fd3-a802-d8c6f4defe88">
+
+RAM Usage (iOS)
+
+<img width="732" alt="image" src="https://github.com/user-attachments/assets/52e49187-e36a-4580-9e6a-2c769e5afb74">
+
+
+
+
+
 
 
 
