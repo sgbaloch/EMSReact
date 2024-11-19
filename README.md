@@ -61,6 +61,25 @@ RAM Usage (iOS)
 
 <img width="732" alt="image" src="https://github.com/user-attachments/assets/52e49187-e36a-4580-9e6a-2c769e5afb74">
 
+Application or Package size
+
+<img width="758" alt="image" src="https://github.com/user-attachments/assets/370066b4-706b-4b53-84ee-03d0432d82de">
+
+Lines of code
+
+<img width="759" alt="image" src="https://github.com/user-attachments/assets/8d222309-bafc-4544-bab0-fd72161e2d96">
+
+Community support on Stackoverflow.com
+
+<img width="761" alt="image" src="https://github.com/user-attachments/assets/219886ba-0730-402f-a0c8-dcfd6c2596b6">
+
+Conclusion
+
+Both, Flutter and React Native are very powerful cross-platform development frameworks.
+Each has its own pros and cons.
+In terms of performance comparison, Flutter is slightly ahead than React Native based on the results of the study.
+In case of ease of development, React Native looked better based on the lines of code and as well as on personal development experience.
+
 
 
 
