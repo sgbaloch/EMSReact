@@ -32,7 +32,7 @@ Technologies used
 
 Objectives:
 
-In order to achieve the aims of this study, the following objectives are set:
+In order to achieve the aims of this study, the following objectives were set:
 
     1. Design an app which should contain different type of components that can be used to compare each framework.
     2. Setup the environment for both frameworks including the SDKs and IDEs.
